@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Momentum App</title>
+    <script src="js/greetings.js" defer></script>
+    <script src="js/clock.js" defer></script>
+    <script src="js/random.js" defer></script>
+    <!-- <script src="/js/background.js" defer></script> -->
+    <script src="js/todo.js" defer></script>
+    <script src="js/weather.js" defer></script>
+    <script src="js/calculator.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="hidden" id="greeting"></h1>
+            <h2 id="clock">00:00:00</h2>
+            <div class="right">
+                <h2 id="date">0000년 00월 00일 0요일</h2>
+                <div id="weather">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </header>
+        <div class="calculator">
+            <a href="#" class="toggleBtn">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+            <div class="calBox">
+                <form id="forms" name="forms">
+                    <input type="text" name="output">
+                    <input type="button" class="operator" value="*">
+                    <input type="button" class="operator" value="/">
+                    <input type="button" class="clear" value="C">
+                    <input type="button" class="operator" value="-">
+                    <input type="button" class="dot" value=".">
+                    <input type="button" class="operator" value="+">
+                    <input type="button" class="result" value="=">
+                </form>
+            </div>
+        </div>
+        <section>
+            <form class="hidden" id="login-form">
+                <input required maxlength="10" type="text" placeholder="What is your name?">
+            </form>
+            <h2>주차별 income</h2>
+            <form id="todo-form">
+                <input type="text" required>
+            </form>
+            <ul id="todo-list"></ul>
+        </section>
+        <footer>
+            <div id="randomMe">
+                <span></span>
+                <span></span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
