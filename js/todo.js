@@ -1,10 +1,17 @@
 'use strict';
 
-const toDoForm = document.querySelector("#todo-form");
-const toDoInput = document.querySelector("#todo-form input");
-const toDoList = document.querySelector("#todo-list");
+const toDoForm = document.querySelector("#list-form");
+const toDoInput = document.querySelector("#list-form form input");
+const toDoList = document.querySelector("#list-form ul");
 
-toDoInput.placeholder = Number(localStorage.getItem("sum")).toLocaleString();
+const sumValue = Number(localStorage.getItem("sum"));
+function setPlaceholder(sumValue) {
+    if(sumValue === 0) {
+        toDoInput.placeholder = 0
+    } else {
+        toDoInput.placeholder = Number(localStorage.getItem("sum")).toLocaleString();
+    }
+}
 
 const TODOS_KEY = "todos"
 
@@ -19,7 +26,8 @@ function deleteClick(event) {
     li.remove();
     toDos = toDos.filter(toDo => toDo.id !== parseInt(li.id));
     saveToDos();
-    sum()
+    sum();
+    setPlaceholder();
 }
 
 function paintToDo(newTodo) {
@@ -54,7 +62,8 @@ function handleToDoSubmit(event) {
     toDos.push(newTodoObj);
     paintToDo(newTodoObj);
     saveToDos();
-    sum()
+    sum();
+    setPlaceholder();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
@@ -66,3 +75,5 @@ if(savedToDos !== null) {
     toDos = parsedToDos;    
     parsedToDos.forEach(paintToDo);
 }
+
+document.addEventListener("DOMContentLoaded", setPlaceholder);

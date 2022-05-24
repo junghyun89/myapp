@@ -1,7 +1,6 @@
 'use strict';
 
-const toggleBtn = document.querySelector(".toggleBtn");
-const calculator = document.querySelector(".calBox");
+const toggleBtn = document.querySelector(".calToggle");
 const outputBox = document.querySelector('#forms input[name=output]');
 const calBtns = document.querySelectorAll('#forms input[type=button]');
 const multipleBtn = document.querySelector('#forms input[value="*"]');
@@ -13,10 +12,6 @@ const plusBtn = document.querySelector('#forms input[value="+"]');
 const equalBtn = document.querySelector('#forms input[value="="]');
 
 const RESULTVALUE_KEY = "resultValue"
-
-toggleBtn.addEventListener("click", () => {
-    calculator.classList.toggle("active");
-});
 
 function showResult() {
     outputBox.value = eval(outputBox.value);

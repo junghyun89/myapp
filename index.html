@@ -12,6 +12,7 @@
     <script src="js/clock.js" defer></script>
     <script src="js/random.js" defer></script>
     <!-- <script src="/js/background.js" defer></script> -->
+    <script src="js/toggles.js" defer></script>
     <script src="js/todo.js" defer></script>
     <script src="js/weather.js" defer></script>
     <script src="js/calculator.js" defer></script>
@@ -30,35 +31,42 @@
                 </div>
             </div>
         </header>
-        <div class="calculator">
-            <a href="#" class="toggleBtn">
+        <section id="toggles">
+            <a href="#" class="calToggle">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+            <a href="#" class="liToggle">
                 <i class="fa-solid fa-bars"></i>
             </a>
-            <div class="calBox">
-                <form id="forms" name="forms">
-                    <input type="text" name="output">
-                    <input type="button" class="operator" value="*">
-                    <input type="button" class="operator" value="/">
-                    <input type="button" class="clear" value="C">
-                    <input type="button" class="operator" value="-">
-                    <input type="button" class="dot" value=".">
-                    <input type="button" class="operator" value="+">
-                    <input type="button" class="result" value="=">
+        </section>
+        <div id="calculator" class="active" >
+            <form id="forms" name="forms">
+                <input type="text" name="output">
+                <input type="button" class="operator" value="*">
+                <input type="button" class="operator" value="/">
+                <input type="button" class="clear" value="C">
+                <input type="button" class="operator" value="-">
+                <input type="button" class="dot" value=".">
+                <input type="button" class="operator" value="+">
+                <input type="button" class="result" value="=">
+            </form>
+        </div>
+        <section id="main" class="active">
+            <div id="login-form">
+                <form>
+                    <input required maxlength="10" type="text" placeholder="What is your name?">
                 </form>
             </div>
-        </div>
-        <section>
-            <form class="hidden" id="login-form">
-                <input required maxlength="10" type="text" placeholder="What is your name?">
-            </form>
-            <h2>주차별 income</h2>
-            <form id="todo-form">
-                <input type="text" required>
-            </form>
-            <ul id="todo-list"></ul>
+            <div id="list-form" class="hidden">
+                <h2>주차별 income</h2>
+                <form>
+                    <input type="text" required>
+                </form>
+                <ul id="list"></ul>
+            </div>
         </section>
         <footer>
-            <div id="randomMe">
+            <div id="randomMe" class="hidden">
                 <span></span>
                 <span></span>
             </div>

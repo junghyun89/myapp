@@ -37,60 +37,83 @@ header {
     font-weight: bold;
     font-size: 30px;
 }
-.calculator {
+#toggles {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: var(--big-space);
+    padding-bottom: 0;
+}
+#toggles i {
+    color: var(--white-color);
+    padding: var(--small-space);
+}
+#calculator {
     padding: var(--big-space);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
 }
-.calculator .toggleBtn {
+#calculator.active {
+    display: none;
+}
+#calculator .toggleBtn {
     display: block;
     padding-bottom: var(--small-space);
 }
-.calculator .toggleBtn i {
+#calculator .toggleBtn i {
     padding: var(--small-space);
 }
-.calBox {
-    display: none;
-}
-.calBox.active {
-    display: flex;
-}
-.calculator i {
+#calculator i {
     color: var(--white-color);
 }
-.calculator form{
+#calculator form{
     display: grid;
     grid-auto-rows: 40px;
     grid-gap: 3px;
     padding: 3px;
     border: 1px solid var(--black-color);
 }
-.calculator form input{
+#calculator form input{
     font-size: 16px;
     font-weight: bold;
     font-family: 'Quicksand', sans-serif;
 }
-.calculator form input:hover{
+#calculator form input:hover{
     box-shadow: 1px 1px 2px var(--black-color);
 }
-.calculator form input[type="text"]{
+#calculator form input[type="text"]{
     grid-column: span 3;
     text-align: right;
     padding: 0 var(--small-space);
 }
-.calculator form .result{
+#calculator form .result{
     grid-column: span 3;
 }
-section {
+#main {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: var(--big-space);
+}
+#main.active {
+    display: none;
+}
+#list-form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-section input {
-    width: 160px;
+#list-form.hidden {
+    display: none;
+}
+#list-form h2 {
+    font-size: 14px;
+}
+#main input {
+    width: 150px;
     height: 25px;
     padding: var(--small-space);
     border: 2px solid var(--white-color);
@@ -102,13 +125,13 @@ section input {
     text-align: center;
     color: var(--white-color);
 }
-#todo-list li {
+#list-form #list li {
     padding: var(--small-space);
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 13px;
 }
-#todo-list li button {
+#list-form #list li button {
     background: none;
     border: none;
     color: white;
@@ -122,6 +145,8 @@ section input {
 footer {
     padding: var(--middle-space);
     font-size: 12px;
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
