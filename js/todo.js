@@ -4,13 +4,8 @@ const toDoForm = document.querySelector("#list-form");
 const toDoInput = document.querySelector("#list-form form input");
 const toDoList = document.querySelector("#list-form ul");
 
-const sumValue = Number(localStorage.getItem("sum"));
-function setPlaceholder(sumValue) {
-    if(sumValue === 0) {
-        toDoInput.placeholder = 0
-    } else {
-        toDoInput.placeholder = Number(localStorage.getItem("sum")).toLocaleString();
-    }
+function setPlaceholder() {
+    toDoInput.placeholder = Number(localStorage.getItem("sum")).toLocaleString();
 }
 
 const TODOS_KEY = "todos"
