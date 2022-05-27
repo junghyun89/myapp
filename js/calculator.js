@@ -1,35 +1,73 @@
-'use strict';
+"use strict";
 
+let numOne = "";
+let operator = "";
+const RESULT_VALUE_KEY = "resultValue";
+let numTwo = localStorage.getItem(RESULT_VALUE_KEY);
+const $operator = document.querySelector("#operator");
 const toggleBtn = document.querySelector(".calToggle");
 const $forms = document.querySelector("#forms");
-const outputBox = document.querySelector('#forms input[name=output]');
-const calBtns = document.querySelectorAll('#forms input[type=button]');
-const multipleBtn = document.querySelector('#forms input[value="*"]');
-const divideBtn = document.querySelector('#forms input[value="/"]');
-const cancleBtn = document.querySelector('#forms input[value=C]');
-const minusBtn = document.querySelector('#forms input[value="-"]');
-const dotBtn = document.querySelector(".dot");
-const plusBtn = document.querySelector('#forms input[value="+"]');
-const equalBtn = document.querySelector('#forms input[value="="]');
-
-const RESULTVALUE_KEY = "resultValue"
+const outputBox = document.querySelector("#forms input[name=output]");
+const $buttons = document.querySelectorAll("button");
 
 function showResult(event) {
-    event.preventDefault();
-    outputBox.value = eval(outputBox.value);
-    localStorage.removeItem(RESULTVALUE_KEY);
-    localStorage.setItem(RESULTVALUE_KEY, outputBox.value);
+  event.preventDefault();
+  if (!localStorage.getItem(RESULT_VALUE_KEY)) {
+    numTwo = 0;
+  } else {
+    numOne = outputBox.value;
+    switch (operator) {
+      case "+":
+        outputBox.value = parseInt(numOne) + parseInt(numTwo);
+        break;
+      case "-":
+        outputBox = numOne - numTwo;
+        break;
+      case "*":
+        outputBox = numOne * numTwo;
+        break;
+      case "/":
+        outputBox = numOne / numTwo;
+        break;
+    }
+  }
+  localStorage.removeItem(RESULT_VALUE_KEY);
+  localStorage.setItem(RESULT_VALUE_KEY, outputBox.value);
 }
 
-document.addEventListener("DOMContentLoaded", () => {outputBox.value = localStorage.getItem(RESULTVALUE_KEY)})
-multipleBtn.addEventListener("click", () => {outputBox.value += multiple});
-divideBtn.addEventListener("click", () => {outputBox.value += "/"});
-cancleBtn.addEventListener("click", () => {outputBox.value = ""});
-minusBtn.addEventListener("click", () => {outputBox.value += "-"});
-dotBtn.addEventListener("click", () => {outputBox.value += "."});
-plusBtn.addEventListener("click", () => {outputBox.value += "+"});
-// equalBtn.addEventListener("click", showResult);
-$forms.addEventListener("submit", showResult);
-calBtns.forEach(button => button.addEventListener("click", () => {outputBox.focus()}));
+const onClickOperator = (op) => (event) => {
+  event.preventDefault();
+  operator = op;
+  $operator.value = op;
+};
 
+document.addEventListener("DOMContentLoaded", () => {
+  if (!localStorage.getItem(RESULT_VALUE_KEY)) {
+    outputBox.placeholder = 0;
+  } else {
+    outputBox.placeholder = localStorage.getItem(RESULT_VALUE_KEY);
+  }
+});
+document
+  .querySelector("#multiple")
+  .addEventListener("click", onClickOperator("*"));
+document
+  .querySelector("#divide")
+  .addEventListener("click", onClickOperator("/"));
+document
+  .querySelector("#minus")
+  .addEventListener("click", onClickOperator("-"));
+document.querySelector("#plus").addEventListener("click", onClickOperator("+"));
 
+document.querySelector("#cancle").addEventListener("click", () => {
+  outputBox.value = "";
+  $operator.value = "";
+  outputBox.placeholder = localStorage.getItem(RESULT_VALUE_KEY);
+});
+document.querySelector("#equal").addEventListener("click", showResult);
+
+$buttons.forEach((button) =>
+  button.addEventListener("click", () => {
+    outputBox.focus();
+  })
+);

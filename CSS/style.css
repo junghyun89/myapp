@@ -68,28 +68,27 @@ header {
 #calculator i {
     color: var(--white-color);
 }
-#calculator form{
+#calculator #forms{
     display: grid;
-    grid-auto-rows: 40px;
+    grid-template-columns: repeat(3, 55px);
+    grid-auto-rows: 55px;
     grid-gap: 3px;
     padding: 3px;
     border: 1px solid var(--black-color);
 }
-#calculator form input{
+#calculator #forms button{
+    grid: repeat();
     font-size: 16px;
     font-weight: bold;
     font-family: 'Quicksand', sans-serif;
 }
-#calculator form input:hover{
+#calculator form button:hover{
     box-shadow: 1px 1px 2px var(--black-color);
 }
 #calculator form input[type="text"]{
-    grid-column: span 3;
+    grid-column: span 2;
     text-align: right;
     padding: 0 var(--small-space);
-}
-#calculator form .result{
-    grid-column: span 3;
 }
 #main {
     height: 100vh;
